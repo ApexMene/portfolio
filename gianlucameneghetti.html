@@ -1605,9 +1605,62 @@ margin-bottom: 10px;
     .side-item.active .side-num::after { opacity: 1; }
     @media (max-width: 1024px) { .side-nav { display: none; } }
 
+    [data-theme="light"] .hero-badge {
+      border-color: rgba(0,0,0,0.12) !important;
+      background: linear-gradient(160deg, rgba(255,255,255,0.9) 0%, rgba(240,240,245,0.7) 40%, rgba(245,245,250,0.8) 100%) !important;
+      color: rgba(0,0,0,0.4) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+    [data-theme="light"] .hero-badge > span:first-child {
+      color: rgba(0,0,0,0.7) !important;
+      background: linear-gradient(155deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 100%) !important;
+      border-color: rgba(0,0,0,0.15) !important;
+    }
+    [data-theme="light"] .hero-badge > span:nth-child(2) {
+      color: rgba(0,0,0,0.3) !important;
+    }
+    [data-theme="light"] .exp-grid::before {
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.12) 15%, rgba(0,0,0,0.12) 85%, transparent 100%);
+    }
+    [data-theme="light"] .exp-item::before {
+      background: linear-gradient(135deg, #111116 0%,rgba(0,0,0,0.4) 100%);
+      box-shadow: 0 0 12px rgba(0,0,0,0.25),0 0 24px rgba(0,0,0,0.12);
+    }
+    [data-theme="light"] .exp-item:hover::before,[data-theme="light"] .exp-item.active::before {
+      box-shadow: 0 0 18px rgba(0,0,0,0.4),0 0 36px rgba(0,0,0,0.18);
+    }
+    [data-theme="light"] .cert-name { color: #0e0e12; }
+    [data-theme="light"] .contact-link-icon { color: #0e0e12; }
+    [data-theme="light"] .contact-link:hover .contact-link-arrow { color: #0e0e12; }
+    [data-theme="light"] .beyond-card-sub { color: #0e0e12; }
+    [data-theme="light"] .cert-badge-aws.cert-cp {
+      background: linear-gradient(135deg, rgba(160,160,175,0.28) 0%, rgba(190,190,200,0.14) 50%, rgba(160,160,175,0.22) 100%);
+      border-color: rgba(150,150,165,0.45);
+    }
+    [data-theme="light"] .cert-badge-aws.cert-cp:hover {
+      border-color: rgba(170,170,185,0.6);
+      box-shadow: 0 8px 32px rgba(150,150,165,0.3), 0 0 50px rgba(170,170,185,0.2), 0 0 0 1px rgba(0,0,0,0.04) inset;
+    }
+
+[data-theme="dark"] .cmd-item:hover,
+[data-theme="dark"] .cmd-item.selected {
+  background: rgba(255,255,255,0.08) !important;
+}
+[data-theme="dark"] .cmd-item:hover *,
+[data-theme="dark"] .cmd-item.selected * {
+  color: var(--text) !important;
+}
+    [data-theme="light"] #cmd-overlay { background: rgba(0,0,0,0.3); }
+    [data-theme="light"] #cmd-box { box-shadow: 0 24px 60px rgba(0,0,0,0.15); }
+    [data-theme="light"] .cmd-shortcut { color: rgba(0,0,0,0.5); }
+    [data-theme="light"] .cmd-section { color: rgba(0,0,0,0.5); }
+    [data-theme="light"] #cmd-footer { color: rgba(0,0,0,0.5); }
+    [data-theme="light"] #cmd-input::placeholder { color: rgba(0,0,0,0.35); }
+    [data-theme="light"] #cmd-input-wrap svg { color: rgba(0,0,0,0.5); }
+
   </style>
 </head>
-<body><a href="https://gianlucameneghetti.com/cdn-cgi/content?id=PzkfNSqCXF.__Jskr1mA6kMclSIypzcYTQx2pHuv2mU-1779908651.9242692-1.0.1.1-0Z2bxWfl3ChV.pYMKDxmpRLENWwG8wG8LTh.TTvdPGo" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a><a href="https://gianlucameneghetti.com/cdn-cgi/content?id=_.xh7izdQv54mE_QSi8pVQloOjhCQX_q5eFJ6Q8HdCc-1776954698.7658267-1.0.1.1-BTkMCurwGCwGdQA5YxnVrYkEEO8JenvHlzM9AmQbIP8" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<body><a href="https://gianlucameneghetti.com/cdn-cgi/content?id=Qfin_tVMRe6LhbIeMAfkKR77gHZRS1oK05wnyK6slQQ-1779909109.9441795-1.0.1.1-gmDyww4L.gS9bHblxNpXCQITWV44mZ8uyHO.Er.cLaU" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a><a href="https://gianlucameneghetti.com/cdn-cgi/content?id=_.xh7izdQv54mE_QSi8pVQloOjhCQX_q5eFJ6Q8HdCc-1776954698.7658267-1.0.1.1-BTkMCurwGCwGdQA5YxnVrYkEEO8JenvHlzM9AmQbIP8" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
 
 
 <canvas id="dot-grid" style="position:fixed;inset:0;z-index:0;pointer-events:none;transform:translateZ(0);will-change:contents;"></canvas>
@@ -1647,7 +1700,7 @@ margin-bottom: 10px;
         <li><a href="#beyond">Beyond</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="display:none;">
+      <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme">
         <span id="theme-icon">☀</span>
       </button>
       <button id="nav-k-badge" onclick="openCmd()" style="background:var(--bg-glass); border:1px solid var(--border); border-radius:6px; color:var(--text-dim); font-family:var(--mono); font-size:10px; padding:6px 8px; cursor:none; display:flex; align-items:center; transition: all 0.2s;" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'" onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)'" title="Search (⌘ K)">⌘K</button>
@@ -2722,6 +2775,8 @@ margin-bottom: 10px;
     };
   }
 
+  function wa(a) { return (isDark() ? 'rgba(255,255,255,' : 'rgba(0,0,0,') + a + ')'; }
+
   // ── ANIMATED CANVAS MOCKUPS ──────────────────────────────
   const _rafIds = new Map();   // canvasId -> rAF frame ID
   let _telemetryOffset = 0;
@@ -3223,7 +3278,6 @@ margin-bottom: 10px;
   function _startPrism() {
     _stopAnim('mockup-prism');
     let _prismPhase = 0;
-    // Device classification data — matches real use case (device type classifier)
     const _prismData = [
       {id:'DEV-0041', vendor:'Cisco',   type:'SWITCH',  os:'IOS 17.3',  conf:0.97},
       {id:'DEV-0042', vendor:'Juniper', type:'ROUTER',  os:'Junos 21',  conf:0.91},
@@ -3243,98 +3297,85 @@ margin-bottom: 10px;
 
       ctx.fillStyle = c.bg; ctx.fillRect(0, 0, W, H);
 
-      // Header bar
       ctx.fillStyle = c.bg2; ctx.fillRect(0, 0, W, 24);
       ctx.strokeStyle = c.ln; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(0, 23.5); ctx.lineTo(W, 23.5); ctx.stroke();
 
-      // Header text
-      ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.font = '600 7.5px Inter,sans-serif';
+      ctx.fillStyle = wa(0.9); ctx.font = '600 7.5px Inter,sans-serif';
       ctx.fillText('PRISM', 10, 15);
-      ctx.fillStyle = 'rgba(255,255,255,0.28)'; ctx.font = '500 7px Inter,sans-serif';
+      ctx.fillStyle = wa(0.28); ctx.font = '500 7px Inter,sans-serif';
       ctx.fillText('device classifier', 42, 15);
 
-      // Live dot
       const livePulse = 0.5 + 0.5 * Math.sin(_prismPhase * 2.5);
-      ctx.fillStyle = `rgba(255,255,255,${0.6 + livePulse * 0.4})`;
+      ctx.fillStyle = wa(0.6 + livePulse * 0.4);
       ctx.beginPath(); ctx.arc(W - 12, 12, 2.5, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = 'rgba(255,255,255,0.28)'; ctx.font = '5.5px JetBrains Mono,monospace';
+      ctx.fillStyle = wa(0.28); ctx.font = '5.5px JetBrains Mono,monospace';
       ctx.fillText('LIVE', W - 32, 15);
 
-      // Column headers
       const cols = [
         {w: 46, t: 'DEVICE ID'},
         {w: 38, t: 'VENDOR'},
         {w: 38, t: 'TYPE'},
         {w: 30, t: 'CONF'},
       ];
-      ctx.fillStyle = 'rgba(255,255,255,0.07)';
+      ctx.fillStyle = wa(0.07);
       ctx.fillRect(0, 26, W, 13);
       let tx = 8;
-      ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '500 5.5px JetBrains Mono,monospace';
+      ctx.fillStyle = wa(0.4); ctx.font = '500 5.5px JetBrains Mono,monospace';
       cols.forEach(col => { ctx.fillText(col.t, tx, 35); tx += col.w; });
 
-      // Rows
       const rowH = 18, startY = 41;
       _prismData.forEach((row, i) => {
         const y = startY + i * rowH;
         const isNew = i === _prismNewRow;
 
-        // Row highlight for newly classified
         if (isNew) {
           const alpha = 0.06 + 0.04 * Math.sin(_prismPhase * 3);
-          ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+          ctx.fillStyle = wa(alpha);
           ctx.fillRect(0, y, W, rowH);
-          // left accent stripe
-          ctx.fillStyle = `rgba(255,255,255,${0.5 + 0.3 * Math.sin(_prismPhase * 3)})`;
+          ctx.fillStyle = wa(0.5 + 0.3 * Math.sin(_prismPhase * 3));
           ctx.fillRect(0, y, 2, rowH);
         } else {
-          ctx.fillStyle = i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'rgba(255,255,255,0.008)';
+          ctx.fillStyle = i % 2 === 0 ? wa(0.015) : wa(0.008);
           ctx.fillRect(0, y, W, rowH);
         }
 
         tx = 8;
-        // Device ID — bold white
-        ctx.fillStyle = isNew ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.55)';
+        ctx.fillStyle = isNew ? wa(0.95) : wa(0.55);
         ctx.font = isNew ? '600 6px JetBrains Mono,monospace' : '400 6px JetBrains Mono,monospace';
         ctx.fillText(row.id, tx, y + 12); tx += cols[0].w;
 
-        // Vendor
-        ctx.fillStyle = 'rgba(255,255,255,0.38)'; ctx.font = '400 5.5px JetBrains Mono,monospace';
+        ctx.fillStyle = wa(0.38); ctx.font = '400 5.5px JetBrains Mono,monospace';
         ctx.fillText(row.vendor, tx, y + 12); tx += cols[1].w;
 
-        // Type — bold, uppercase badge
-        ctx.fillStyle = isNew ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)';
+        ctx.fillStyle = isNew ? wa(0.1) : wa(0.05);
         ctx.beginPath(); ctx.roundRect(tx, y + 4, 34, 10, 2); ctx.fill();
-        ctx.fillStyle = isNew ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.5)';
+        ctx.fillStyle = isNew ? wa(0.9) : wa(0.5);
         ctx.font = '600 5px JetBrains Mono,monospace';
         ctx.fillText(row.type, tx + 3, y + 12); tx += cols[2].w;
 
-        // Confidence bar
         const confBarW = 26, confFill = row.conf * confBarW;
         const pulseConf = isNew ? row.conf + 0.02 * Math.sin(_prismPhase * 4) : row.conf;
-        ctx.fillStyle = 'rgba(255,255,255,0.08)';
+        ctx.fillStyle = wa(0.08);
         ctx.beginPath(); ctx.roundRect(tx, y + 6, confBarW, 6, 2); ctx.fill();
-        ctx.fillStyle = `rgba(255,255,255,${0.35 + pulseConf * 0.5})`;
+        ctx.fillStyle = wa(0.35 + pulseConf * 0.5);
         ctx.beginPath(); ctx.roundRect(tx, y + 6, Math.max(2, confFill), 6, 2); ctx.fill();
-        // Glow on new row bar
         if (isNew) {
-          ctx.shadowColor = 'rgba(255,255,255,0.4)';
+          ctx.shadowColor = wa(0.4);
           ctx.shadowBlur = 4;
-          ctx.fillStyle = `rgba(255,255,255,${0.6 + 0.2 * Math.sin(_prismPhase * 4)})`;
+          ctx.fillStyle = wa(0.6 + 0.2 * Math.sin(_prismPhase * 4));
           ctx.beginPath(); ctx.roundRect(tx, y + 6, Math.max(2, confFill), 6, 2); ctx.fill();
           ctx.shadowBlur = 0;
         }
       });
 
-      // Bottom status bar
       ctx.fillStyle = c.bg2; ctx.fillRect(0, H - 18, W, 18);
       ctx.strokeStyle = c.ln; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(0, H - 18); ctx.lineTo(W, H - 18); ctx.stroke();
       ctx.fillStyle = c.txt; ctx.font = '5.5px JetBrains Mono,monospace';
       ctx.fillText('LightGBM · ONNX INT8 · 14ms avg', 8, H - 6);
       const throughput = (Math.sin(_prismPhase) * 0.5 + 1.5).toFixed(1) + 'k/s';
-      ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.font = '600 5.5px JetBrains Mono,monospace';
+      ctx.fillStyle = wa(0.45); ctx.font = '600 5.5px JetBrains Mono,monospace';
       ctx.fillText(throughput, W - 8 - ctx.measureText(throughput).width, H - 6);
 
       _rafIds.set('mockup-prism', requestAnimationFrame(frame));
@@ -4380,5 +4421,5 @@ margin-bottom: 10px;
     sections.forEach(s => obs.observe(s));
   })();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f0d92b34a1d525a',t:'MTc3Njk1NDY5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a02748b28e035268',t:'MTc3OTkwODY1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f0d92b34a1d525a',t:'MTc3Njk1NDY5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a02753e12cecb83b',t:'MTc3OTkwOTEwOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

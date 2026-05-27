@@ -1658,6 +1658,24 @@ margin-bottom: 10px;
     [data-theme="light"] #cmd-input::placeholder { color: rgba(0,0,0,0.35); }
     [data-theme="light"] #cmd-input-wrap svg { color: rgba(0,0,0,0.5); }
 
+    .hero-video-wrap {
+      position: absolute; inset: 0; z-index: -1;
+      overflow: hidden;
+    }
+    .hero-video-wrap video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    .hero-video-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+    }
+    [data-theme="light"] .hero-video-wrap { display: none; }
+    @media (max-width: 768px) {
+      .hero-video-wrap { display: none; }
+    }
+
   </style>
 </head>
 <body><a href="https://gianlucameneghetti.com/cdn-cgi/content?id=Qfin_tVMRe6LhbIeMAfkKR77gHZRS1oK05wnyK6slQQ-1779909109.9441795-1.0.1.1-gmDyww4L.gS9bHblxNpXCQITWV44mZ8uyHO.Er.cLaU" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a><a href="https://gianlucameneghetti.com/cdn-cgi/content?id=_.xh7izdQv54mE_QSi8pVQloOjhCQX_q5eFJ6Q8HdCc-1776954698.7658267-1.0.1.1-BTkMCurwGCwGdQA5YxnVrYkEEO8JenvHlzM9AmQbIP8" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
@@ -1709,6 +1727,12 @@ margin-bottom: 10px;
 </nav>
 
 <section id="hero">
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="moto-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
   <div class="container">
     <div class="hero-grid">
       <div>
@@ -1920,6 +1944,7 @@ margin-bottom: 10px;
     <p class="section-label reveal">Projects</p>
     <h2 class="section-title reveal reveal-delay-1">Things I've <em>actually shipped.</em></h2>
     <p class="section-sub reveal reveal-delay-2" style="font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--text-dim);margin-top:-8px;margin-bottom:28px;font-style:italic;">Production systems, end-to-end ownership</p>
+    <p class="section-sub reveal reveal-delay-2" style="font-family:var(--mono);font-size:.5rem;letter-spacing:.04em;color:var(--text-dim);margin-top:-26px;margin-bottom:32px;opacity:0.5;">Project names are placeholders — anonymized for client confidentiality.</p>
     <div class="projects-grid">
         <div class="flip-container reveal reveal-delay-1">
           <div class="flipper">

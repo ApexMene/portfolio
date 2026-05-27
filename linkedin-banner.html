@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<title>LinkedIn Banner</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0e0e12;
+  --text: #f2f2f5;
+  --text-muted: #8a8a96;
+  --text-dim: #3a3a42;
+}
+
+html {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+body {
+  background: var(--bg);
+  width: 1584px; height: 396px;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  padding: 0 64px;
+  position: relative;
+  transform-origin: top center;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(255,255,255,0.02) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 70% 60%, rgba(255,255,255,0.015) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 60% at 35% 50%, black, transparent 65%);
+}
+
+.content {
+  position: relative; z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 48px;
+}
+
+.left { flex: 1; }
+
+.name {
+  font-size: 52px; font-weight: 500; line-height: 1.05;
+  letter-spacing: -.03em;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 12px 5px 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  background: rgba(255,255,255,0.03);
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px; letter-spacing: .06em;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.hero-badge-pill {
+  background: rgba(255,255,255,0.06);
+  border-radius: 100px; padding: 2px 8px;
+  color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: .04em;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px; letter-spacing: .04em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.desc strong { color: var(--text); font-weight: 500; }
+
+.hero-card {
+  width: 300px;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 40%, transparent 100%);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 26px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.01) inset, 0 32px 80px rgba(0,0,0,0.7);
+  position: relative; overflow: hidden;
+}
+
+.hero-card::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.04) 100%);
+  pointer-events: none;
+}
+
+.card-title {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 10px; letter-spacing: .06em;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.card-value {
+  font-size: 20px; font-weight: 500;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 80%, transparent);
+  margin-bottom: 14px;
+}
+
+.card-stat {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 5px 0;
+}
+
+.card-stat-label {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 10px; letter-spacing: .05em;
+  color: var(--text-dim);
+}
+
+.card-stat-value {
+  font-size: 12px; font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  text-align: right;
+}
+
+.card-stat-value strong { color: var(--text); font-weight: 500; }
+
+.photo-fade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right,
+      #0e0e12 0%,
+      #0e0e12 40%,
+      rgba(14,14,18,0.92) 46%,
+      rgba(14,14,18,0.75) 52%,
+      rgba(14,14,18,0.5) 58%,
+      rgba(14,14,18,0.2) 65%,
+      rgba(14,14,18,0) 72%
+    ),
+    url('IMG-20260301-WA0052.jpg') calc(100% + 450px) 43% / cover no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="left">
+      <div class="hero-badge">
+        <span class="hero-badge-pill">ML Eng</span>
+        <span>Production ML</span>
+      </div>
+      <div class="eyebrow">— Milano, Italy</div>
+      <div class="name">Gianluca Meneghetti</div>
+      <div class="desc">
+        Production ML systems from scratch at 20. End-to-end on <strong>AWS</strong> · Bedrock · SageMaker. Innovation Challenge 2024.
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="card-title">What I do</div>
+      <div class="card-value">ML Engineering</div>
+      <div class="card-divider"></div>
+      <div class="card-stat">
+        <span class="card-stat-label">Based</span>
+        <span class="card-stat-value">Milan, Italy</span>
+      </div>
+      <div class="card-stat">
+        <span class="card-stat-label">Experience</span>
+        <span class="card-stat-value">2+ Years · Production ML</span>
+      </div>
+      <div class="card-stat">
+        <span class="card-stat-label">Certified</span>
+        <span class="card-stat-value"><strong>AWS</strong> ML · Cloud Practitioner</span>
+      </div>
+      <div class="card-stat">
+        <span class="card-stat-label">Stack</span>
+        <span class="card-stat-value">Bedrock · SageMaker · Python</span>
+      </div>
+    </div>
+  </div>
+  <div class="photo-fade"></div>
+  <script>
+    function applyScale() {
+      const scale = window.innerWidth / 1584;
+      document.body.style.transformOrigin = 'top left';
+      document.body.style.transform = 'scale(' + scale + ')';
+      document.body.style.marginLeft = ((window.innerWidth - 1584 * scale) / 2) + 'px';
+      document.documentElement.style.height = (396 * scale) + 'px';
+    }
+    applyScale();
+    window.addEventListener('resize', applyScale);
+  </script>
+</body>
+</html>

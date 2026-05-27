@@ -1644,6 +1644,14 @@ margin-bottom: 10px;
     .status-link:hover {
       border-bottom-color: rgba(255,255,255,0.8);
     }
+    .trophy-cup { fill: url(#trophy-gold-d); stroke: #c9941a; stroke-width: 1; }
+    .trophy-handle { stroke: #c9941a; stroke-width: 1.5; fill: none; }
+    .trophy-base { fill: url(#trophy-gold-d); stroke: #c9941a; }
+    .trophy-foot { fill: url(#trophy-gold-d); stroke: #c9941a; }
+    [data-theme="light"] .trophy-cup { fill: url(#trophy-gold-l); stroke: #7a5a07; }
+    [data-theme="light"] .trophy-handle { stroke: #7a5a07; }
+    [data-theme="light"] .trophy-base { fill: url(#trophy-gold-l); stroke: #7a5a07; }
+    [data-theme="light"] .trophy-foot { fill: url(#trophy-gold-l); stroke: #7a5a07; }
     [data-theme="light"] .status-link {
       border-bottom-color: rgba(0,0,0,0.25);
     }
@@ -1792,8 +1800,8 @@ margin-bottom: 10px;
       <div class="hero-card">
         <div class="status-row">
           <div class="status-dot"></div>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-          <a href="https://www.italtel.com/it/the-innovation-game-un-investimento-sulle-persone-e-sullinnovazione/" target="_blank" class="status-link">Innovation Challenge 2024</a>
+          <svg class="trophy-icon" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><defs><linearGradient id="trophy-gold-d" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7d875"/><stop offset="50%" stop-color="#e5b83a"/><stop offset="100%" stop-color="#c9941a"/></linearGradient><linearGradient id="trophy-gold-l" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b8860b"/><stop offset="50%" stop-color="#9a7209"/><stop offset="100%" stop-color="#7a5a07"/></linearGradient></defs><path d="M6 2h12v2a8 8 0 0 1-6.5 7.9A8 8 0 0 1 6 4V2Z" class="trophy-cup" stroke-linejoin="round"/><path d="M6 2H4v2a8 8 0 0 0 5 7.3" class="trophy-handle" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 2h2v2a8 8 0 0 1-5 7.3" class="trophy-handle" stroke-linecap="round" stroke-linejoin="round"/><rect x="8" y="14" width="8" height="3" rx="1" class="trophy-base" stroke-width="1"/><rect x="10" y="17" width="4" height="4" rx="1" class="trophy-foot" stroke-width="1"/><path d="M7 21h10" class="trophy-handle" stroke-linecap="round"/></svg>
+          <a href="https://www.italtel.com/it/the-innovation-game-un-investimento-sulle-persone-e-sullinnovazione/" target="_blank" class="status-link">Winner Of Innovation Challenge 2024</a>
         </div>
         <div class="card-title">What I do</div>
         <div class="card-value">ML Engineering</div>

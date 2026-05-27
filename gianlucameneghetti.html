@@ -246,7 +246,9 @@
     [data-theme="light"] .back-quote { border-left-color: rgba(0,0,0,0.25); }
 
     [data-theme="light"] .hero-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.65) 100%);
+      background: linear-gradient(145deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0.25) 100%);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       border: 1px solid rgba(0,0,0,0.08);
       border-top: 1px solid rgba(0,0,0,0.12);
       box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
@@ -1606,18 +1608,32 @@ margin-bottom: 10px;
     @media (max-width: 1024px) { .side-nav { display: none; } }
 
     [data-theme="light"] .hero-badge {
-      border-color: rgba(0,0,0,0.12) !important;
-      background: linear-gradient(160deg, rgba(255,255,255,0.9) 0%, rgba(240,240,245,0.7) 40%, rgba(245,245,250,0.8) 100%) !important;
-      color: rgba(0,0,0,0.4) !important;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+      border-color: rgba(0,0,0,0.15) !important;
+      background: linear-gradient(160deg, rgba(255,255,255,0.4) 0%, rgba(240,240,245,0.2) 40%, rgba(245,245,250,0.3) 100%) !important;
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      color: rgba(0,0,0,0.85) !important;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6) !important;
     }
     [data-theme="light"] .hero-badge > span:first-child {
-      color: rgba(0,0,0,0.7) !important;
-      background: linear-gradient(155deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 100%) !important;
-      border-color: rgba(0,0,0,0.15) !important;
+      color: #0e0e12 !important;
+      background: linear-gradient(155deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.05) 100%) !important;
+      border-color: rgba(0,0,0,0.2) !important;
     }
     [data-theme="light"] .hero-badge > span:nth-child(2) {
-      color: rgba(0,0,0,0.3) !important;
+      color: rgba(0,0,0,0.65) !important;
+    }
+    [data-theme="light"] .hero-tagline {
+      color: #333340 !important;
+    }
+    [data-theme="light"] .hero-desc strong {
+      color: #0e0e12 !important;
+    }
+    [data-theme="light"] .hero-eyebrow span {
+      color: #333340 !important;
+    }
+    [data-theme="light"] .hero-eyebrow svg {
+      fill: #333340 !important;
+      opacity: 1 !important;
     }
     [data-theme="light"] .exp-grid::before {
       background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.12) 15%, rgba(0,0,0,0.12) 85%, transparent 100%);
@@ -1659,19 +1675,22 @@ margin-bottom: 10px;
     [data-theme="light"] #cmd-input-wrap svg { color: rgba(0,0,0,0.5); }
 
     .hero-video-wrap {
-      position: absolute; inset: 0; z-index: -1;
+      position: absolute; inset: 0; z-index: 0;
       overflow: hidden;
     }
     .hero-video-wrap video {
       width: 100%; height: 100%;
       object-fit: cover;
-      opacity: 0.5;
+      opacity: 0.4;
     }
     .hero-video-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.85) 100%);
     }
-    [data-theme="light"] .hero-video-wrap { display: none; }
+    [data-theme="light"] .hero-video-wrap video { opacity: 0.7; }
+    [data-theme="light"] .hero-video-overlay {
+      background: linear-gradient(180deg, rgba(244,244,246,0.05) 0%, rgba(244,244,246,0.3) 100%);
+    }
     @media (max-width: 768px) {
       .hero-video-wrap { display: none; }
     }
@@ -1737,7 +1756,7 @@ margin-bottom: 10px;
     <div class="hero-grid">
       <div>
         <!-- Raycast/Linear-style pill badge -->
-        <div class="hero-badge" style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border:1px solid rgba(255,255,255,0.15);border-radius:100px;background:linear-gradient(160deg, rgba(0,0,0,0.8) 0%, rgba(20,20,25,0.6) 40%, rgba(10,10,15,0.7) 100%);backdrop-filter:blur(14px) saturate(160%);font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:rgba(180,180,190,0.5);margin-bottom:22px;opacity:0;animation:fadeUp .7s var(--ease) 0s forwards;max-width:100%;white-space:nowrap;box-shadow:0 4px 30px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05);">
+        <div class="hero-badge" style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border:1px solid rgba(255,255,255,0.25);border-radius:100px;background:linear-gradient(160deg, rgba(0,0,0,0.88) 0%, rgba(20,20,25,0.8) 40%, rgba(10,10,15,0.82) 100%);backdrop-filter:blur(14px) saturate(160%);font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:rgba(220,220,230,0.95);margin-bottom:22px;opacity:0;animation:fadeUp .7s var(--ease) 0s forwards;max-width:100%;white-space:nowrap;box-shadow:0 4px 30px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.08);">
           <span style="background:linear-gradient(155deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 100%);border-radius:100px;padding:2px 8px;color:rgba(230,230,235,0.8);font-weight:600;letter-spacing:.04em;flex-shrink:0;box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset, 0 4px 16px rgba(0,0,0,0.3);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border:1px solid rgba(255,255,255,0.1);border-top:1px solid rgba(255,255,255,0.15);">ML Eng</span>
           <span style="overflow:hidden;text-overflow:ellipsis;color:rgba(180,180,190,0.35);">Open to interesting projects &amp; collaborations</span>
         </div>

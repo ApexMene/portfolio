@@ -10,14 +10,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0e0e12;
-  --text: #f2f2f5;
-  --text-muted: #8a8a96;
-  --text-dim: #3a3a42;
+  --bg: #f4f4f6;
+  --text: #16161a;
+  --text-muted: #6c6c76;
+  --text-dim: #6e6e78;
 }
 
 html {
-  background: #111;
+  background: #d8d8dc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,8 +43,8 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(255,255,255,0.02) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 70% 60%, rgba(255,255,255,0.015) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(0,0,0,0.02) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 70% 60%, rgba(0,0,0,0.015) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -53,8 +53,8 @@ body::after {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   mask-image: radial-gradient(ellipse 70% 60% at 35% 50%, black, transparent 65%);
@@ -80,9 +80,9 @@ body::after {
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 5px 12px 5px 8px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(0,0,0,0.14);
   border-radius: 100px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
   font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   font-size: 11px; letter-spacing: .06em;
   color: var(--text-muted);
@@ -90,10 +90,10 @@ body::after {
 }
 
 .hero-badge-pill {
-  background: rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.07);
   border-radius: 100px; padding: 2px 8px;
-  color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: .04em;
-  border: 1px solid rgba(255,255,255,0.06);
+  color: rgba(0,0,0,0.65); font-weight: 500; letter-spacing: .04em;
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 .eyebrow {
@@ -115,19 +115,19 @@ body::after {
 .hero-card {
   width: 300px;
   flex-shrink: 0;
-  background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 40%, transparent 100%);
-  backdrop-filter: blur(32px) saturate(200%);
-  -webkit-backdrop-filter: blur(32px) saturate(200%);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  background: linear-gradient(145deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 40%, rgba(255,255,255,0.25) 100%);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-top: 1px solid rgba(255,255,255,0.8);
   border-radius: 20px; padding: 26px;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.01) inset, 0 32px 80px rgba(0,0,0,0.7);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.2) inset, 0 24px 60px rgba(0,0,0,0.18);
   position: relative; overflow: hidden;
 }
 
 .hero-card::before {
   content: ''; position: absolute; inset: 0; border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.04) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.3) 100%);
   pointer-events: none;
 }
 
@@ -146,7 +146,7 @@ body::after {
 
 .card-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 80%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12) 20%, rgba(0,0,0,0.12) 80%, transparent);
   margin-bottom: 14px;
 }
 
@@ -163,33 +163,61 @@ body::after {
 
 .card-stat-value {
   font-size: 12px; font-weight: 400;
-  color: rgba(255,255,255,0.55);
+  color: rgba(0,0,0,0.6);
   text-align: right;
 }
 
 .card-stat-value strong { color: var(--text); font-weight: 500; }
 
+.cert-badges {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 5px;
+}
+
+.cert-pill {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: .02em;
+  padding: 3px 9px; border-radius: 6px;
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: rgba(0,0,0,0.7);
+  white-space: nowrap;
+}
+
+.cert-pill.cert-ml {
+  background: linear-gradient(135deg, rgba(167,139,250,0.28) 0%, rgba(139,92,246,0.16) 50%, rgba(167,139,250,0.22) 100%);
+  border-color: rgba(139,92,246,0.45);
+  color: #5b3fb0;
+}
+
 .photo-fade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right,
-      #0e0e12 0%,
-      rgba(14,14,18,0.99) 14%,
-      rgba(14,14,18,0.97) 24%,
-      rgba(14,14,18,0.92) 34%,
-      rgba(14,14,18,0.84) 42%,
-      rgba(14,14,18,0.72) 50%,
-      rgba(14,14,18,0.56) 58%,
-      rgba(14,14,18,0.38) 66%,
-      rgba(14,14,18,0.22) 73%,
-      rgba(14,14,18,0.09) 80%,
-      rgba(14,14,18,0.02) 88%,
-      rgba(14,14,18,0) 95%
-    ),
     url('IMG-20260301-WA0052.jpg') calc(100% + 450px) 38% / cover no-repeat;
   pointer-events: none;
   z-index: 1;
+  -webkit-mask-image: linear-gradient(to right,
+    transparent 0%,
+    rgba(0,0,0,0.01) 30%,
+    rgba(0,0,0,0.04) 42%,
+    rgba(0,0,0,0.12) 50%,
+    rgba(0,0,0,0.28) 58%,
+    rgba(0,0,0,0.5) 66%,
+    rgba(0,0,0,0.75) 74%,
+    rgba(0,0,0,0.92) 82%,
+    black 90%
+  );
+  mask-image: linear-gradient(to right,
+    transparent 0%,
+    rgba(0,0,0,0.01) 30%,
+    rgba(0,0,0,0.04) 42%,
+    rgba(0,0,0,0.12) 50%,
+    rgba(0,0,0,0.28) 58%,
+    rgba(0,0,0,0.5) 66%,
+    rgba(0,0,0,0.75) 74%,
+    rgba(0,0,0,0.92) 82%,
+    black 90%
+  );
 }
 </style>
 </head>
@@ -203,7 +231,7 @@ body::after {
       <div class="eyebrow">— Milano, Italy</div>
       <div class="name">Gianluca Meneghetti</div>
       <div class="desc">
-        Production ML systems from scratch at 20. End-to-end on <strong>AWS</strong> · Bedrock · SageMaker. Innovation Challenge 2024.
+        Driven by hard problems.
       </div>
     </div>
 
@@ -221,7 +249,10 @@ body::after {
       </div>
       <div class="card-stat">
         <span class="card-stat-label">Certified</span>
-        <span class="card-stat-value"><strong>AWS</strong> ML · Cloud Practitioner</span>
+        <span class="cert-badges">
+          <span class="cert-pill cert-ml">AWS ML Specialty</span>
+          <span class="cert-pill">Cloud Practitioner</span>
+        </span>
       </div>
       <div class="card-stat">
         <span class="card-stat-label">Stack</span>

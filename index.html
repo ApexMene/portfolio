@@ -1535,23 +1535,22 @@ if(webgl&&bezelCanvas){
   new IntersectionObserver(es=>{bzVisible=es.some(e=>e.isIntersecting);setWatchAudio(bzVisible);},{threshold:.05})
     .observe(bezelCanvas.parentElement);
 
-  /* the piece earns its 3D · drag to turn it in hand, inertia on release */
-  if(!reduced){
-    bezStage.style.cursor='grab';
-    bezStage.addEventListener('pointerdown',e=>{
-      bzDrag=true;bzPX=e.clientX;bzPY=e.clientY;bzVX=0;bzVY=0;
-      bezStage.setPointerCapture(e.pointerId);bezStage.style.cursor='grabbing';
-    });
-    bezStage.addEventListener('pointermove',e=>{
-      if(!bzDrag)return;
-      bzVX=(e.clientX-bzPX)*.0055;bzVY=(e.clientY-bzPY)*.0055;
-      bzDX+=bzVX;bzDY=clamp(bzDY+bzVY,-1.1,1.1);
-      bzPX=e.clientX;bzPY=e.clientY;
-    });
-    const drop=()=>{bzDrag=false;bezStage.style.cursor='grab';};
-    bezStage.addEventListener('pointerup',drop);
-    bezStage.addEventListener('pointercancel',drop);
-  }
+  /* the piece earns its 3D · drag to turn it in hand, inertia on release
+     — user-driven, so it stays on even under prefers-reduced-motion (only idle/autoplay drift is gated by `reduced`) */
+  bezStage.style.cursor='grab';
+  bezStage.addEventListener('pointerdown',e=>{
+    bzDrag=true;bzPX=e.clientX;bzPY=e.clientY;bzVX=0;bzVY=0;
+    bezStage.setPointerCapture(e.pointerId);bezStage.style.cursor='grabbing';
+  });
+  bezStage.addEventListener('pointermove',e=>{
+    if(!bzDrag)return;
+    bzVX=(e.clientX-bzPX)*.0055;bzVY=(e.clientY-bzPY)*.0055;
+    bzDX+=bzVX;bzDY=clamp(bzDY+bzVY,-1.1,1.1);
+    bzPX=e.clientX;bzPY=e.clientY;
+  });
+  const drop=()=>{bzDrag=false;bezStage.style.cursor='grab';};
+  bezStage.addEventListener('pointerup',drop);
+  bezStage.addEventListener('pointercancel',drop);
 }
 
 /* ============================================================   SCENE 2 · TT Circuit Assen: track + 3 bikes
@@ -1952,11 +1951,11 @@ function frame(){
   if(vaultTrack){
     const vr=vaultTrack.getBoundingClientRect();
     const vp=clamp(-vr.top/((vr.height-innerHeight)||1),0,1);
-    bzIris=reduced?1:sstep(vp/.85);                 /* the turn spans the whole scroll, no dead tail */
+    bzIris=sstep(vp/.85);          /* scroll reveal always tracks scroll — reduced-motion only cuts idle drift, never the reveal itself */
     const spot=2.5+Math.pow(bzIris,1.2)*147.5;      /* a glimmer hands off the cave's bloom — never dead black */
     if(vaultSpot)vaultSpot.style.setProperty('--spot',spot+'%');
     if(vaultCap){                                   /* the words surface only once the piece is lit */
-      const capK=reduced?1:sstep((vp-.68)/.28);
+      const capK=sstep((vp-.68)/.28);
       vaultCap.style.opacity=capK;
       vaultCap.style.transform=`translateY(${(1-capK)*26}px)`;
     }
@@ -1968,10 +1967,10 @@ function frame(){
     if(!bzDrag){bzVX*=.94;bzVY*=.94;bzDX+=bzVX;bzDY=clamp(bzDY+bzVY,-1.1,1.1);}
     const spin=(reduced?0:time*.05)+p*2.4+bzDX;
     bzGroup.rotation.z=spin;
-    bzGroup.rotation.x=.48+p*.5+Math.sin(time*.09)*.03+bzDY;
-    bzGroup.rotation.y=-.22+Math.sin(time*.11)*.06;
+    bzGroup.rotation.x=.48+p*.5+(reduced?0:Math.sin(time*.09)*.03)+bzDY;
+    bzGroup.rotation.y=-.22+(reduced?0:Math.sin(time*.11)*.06);
     /* the piece drifts up out of the deep as the light finds it */
-    bzCam.position.z=24-3*s5(p)+Math.sin(time*.13)*.5;
+    bzCam.position.z=24-3*s5(p)+(reduced?0:Math.sin(time*.13)*.5);
     bzKey.intensity=1.25*(.15+.85*p);
     /* key light orbits · speculars sweep across the ceramic */
     const la=time*.32;

@@ -1,5 +1,6 @@
 # Dependencies
-vendor/
+vendor/*
+!vendor/three.module.min.js
 
 # Agent tooling
 .omo/

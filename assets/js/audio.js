@@ -109,7 +109,8 @@ export function setWatchAudio(on){
     tickLoaded=true;
     tickGain=ctx.createGain();tickGain.gain.value=0;
     tickGain.connect(ctx.destination);
-    loop('watch.mp3',tickGain,1.15);   /* matches the quicker second-hand step */
+    loop('watch.mp3',tickGain,1.15);
+    preloadMoto();
   }
   if(!tickGain||!ctx)return;
   if(on&&ctx.state==='suspended')ctx.resume();
@@ -117,18 +118,34 @@ export function setWatchAudio(on){
 }
 
 /* ---------- the engine ---------- */
-/* Apex · Onboard — real recorded engine, gated to its section only */
-let motoGain=null,motoLoaded=false;
+/* Apex · Onboard — real recorded engine, gated to its section only.
+   Preloaded during the watch section so it's decoded before the visitor
+   reaches the track — eliminates the 3-4 s fetch+decode delay. */
+let motoGain=null,motoLoaded=false,motoBuffer=null;
+export function preloadMoto(){
+  if(motoBuffer||motoLoaded)return;
+  ensureCtx();
+  fetch(media('moto.mp3'))
+    .then(r=>r.arrayBuffer())
+    .then(ab=>ctx.decodeAudioData(ab))
+    .then(buf=>{motoBuffer=buf;})
+    .catch(()=>{});
+}
 export function setMotoVisible(on){
   if(on&&!motoLoaded){
     ensureCtx();
     motoLoaded=true;
     motoGain=ctx.createGain();motoGain.gain.value=0;
     motoGain.connect(ctx.destination);
-    loop('moto.mp3',motoGain);
+    if(motoBuffer){
+      const src=ctx.createBufferSource();
+      src.buffer=motoBuffer;src.loop=true;
+      src.connect(motoGain);src.start();
+    }else{
+      loop('moto.mp3',motoGain);
+    }
   }
   if(!motoGain||!ctx)return;
   if(on&&ctx.state==='suspended')ctx.resume();
-  /* elegant, not "parte a cannone" · a slow fade, never an abrupt full-volume start */
-  ramp(motoGain,'moto',on?.016:0,on?1.4:.6);
+  ramp(motoGain,'moto',on?.08:0,on?1.4:.6);
 }

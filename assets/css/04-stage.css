@@ -1,0 +1,52 @@
+/* ============================================================
+   SIGNATURE SYSTEM · cursor, guilloché
+============================================================ */
+
+/* the descent · one scroll-scrubbed move: dive, break out, arrive on the piece.
+   The whole journey is a single pin, so the two scenes can overlap in the viewport
+   and hand off mid-motion instead of ending and starting. */
+#cave{position:relative;height:400vh;padding:0;background:#030405;}
+.cave-sticky{position:sticky;top:0;height:100vh;overflow:hidden;isolation:isolate;}
+#cavecv{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;
+  will-change:opacity;}
+.cave-lbl{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:4;
+  font-size:.5rem;letter-spacing:.52em;text-transform:uppercase;color:rgba(226,234,240,.3);white-space:nowrap;}
+.cave-sound{position:absolute;z-index:5;bottom:24px;right:28px;width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(226,234,240,.22);background:rgba(255,255,255,.04);color:rgba(226,234,240,.6);
+  font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(6px);transition:background .2s,border-color .2s,transform .2s;}
+.cave-sound:hover{background:rgba(255,255,255,.09);border-color:rgba(226,234,240,.4);}
+.cave-sound:active{transform:scale(.92);}
+.cave-sound[aria-pressed="true"]{color:#dfe9f2;border-color:rgba(159,194,214,.55);}
+@media(max-width:760px){#cave{height:300vh;}}
+body.no-webgl #cave{display:none;}
+/* the sheet surfaces out of the pin's darkness · no seam at the handoff */
+#piece{background:linear-gradient(180deg,rgba(3,4,5,.92) 0%,rgba(3,4,5,.35) 55vh,transparent 110vh);
+  padding-top:clamp(60px,9vh,110px);}
+
+/* guilloché · engine-turned engraving behind the piece */
+#guill{position:absolute;inset:0;width:100%;height:100%;opacity:.07;pointer-events:none;}
+#bezel{position:relative;z-index:1;}
+
+/* cursor · steel ring */
+#cursor{position:fixed;top:0;left:0;z-index:99;pointer-events:none;opacity:0;transition:opacity .4s;}
+#cursor.on{opacity:1;}
+#cursor i{display:block;width:30px;height:30px;border:1px solid rgba(238,243,246,.4);border-radius:50%;
+  transform:translate(-50%,-50%);transition:width .35s var(--ease),height .35s var(--ease),background .35s,border-color .35s;}
+#cursor.big i{width:56px;height:56px;background:rgba(238,243,246,.05);border-color:rgba(238,243,246,.65);}
+@media(pointer:coarse){#cursor{display:none;}}
+
+/* hero furniture · coordinates */
+.geo{position:absolute;top:88px;font-size:.52rem;letter-spacing:.3em;color:rgba(238,243,246,.48);
+  text-transform:uppercase;z-index:2;}
+.geo.l{left:clamp(30px,4.5vw,64px);}
+.geo.r{right:clamp(30px,4.5vw,64px);text-align:right;}
+@media(max-width:760px){.geo{display:none;}}
+
+/* ---------- reduced motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;transition-delay:0ms!important;}
+  .rv,.lmask>.rv,.hero-name .hl{opacity:1!important;transform:none!important;}
+}

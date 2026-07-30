@@ -1,0 +1,243 @@
+/* ---------- THE PIECE · specification sheet ---------- */
+#piece{position:relative;padding-bottom:clamp(70px,10vh,120px);}
+
+/* the piece's stage · layered over the cave canvas inside the shared pin.
+   Opacity is scrubbed by scroll so the two scenes dissolve into each other while
+   both cameras are still moving — a match dissolve, not a cut through black. */
+#bezel-stage{position:absolute;inset:0;z-index:1;touch-action:pan-y;
+  opacity:0;pointer-events:none;will-change:opacity;}
+#bezel{width:100%;height:100%;display:block;}
+/* the cone of light · scroll scales and fades this, never redraws it.
+   Driving a gradient stop from JS meant re-rasterizing a full-viewport gradient on
+   every single frame of the 180vh pin. Oversized + scaled from 1 upward only, so
+   the darkness can never uncover the corners mid-reveal. */
+.vault-spot{position:absolute;inset:-55%;z-index:2;pointer-events:none;opacity:0;
+  background:radial-gradient(circle at 50% 50%,rgba(3,4,5,0) 9%,rgba(3,4,5,.985) 31%);
+  transform:scale(1);will-change:transform,opacity;}
+/* the light you break out into · peaks across the dissolve and carries the eye
+   from the tunnel mouth onto the piece. A flat layer — free to fade. */
+.vault-flash{position:absolute;inset:-20%;z-index:3;pointer-events:none;opacity:0;
+  background:radial-gradient(circle at 50% 46%,rgba(232,242,250,.92) 0%,rgba(198,214,228,.34) 15%,rgba(150,175,196,0) 44%);
+  will-change:opacity,transform;}
+.vault-cap{position:absolute;left:0;right:0;bottom:clamp(28px,7vh,72px);z-index:4;text-align:center;
+  opacity:0;transform:translate3d(0,26px,0);will-change:opacity,transform;pointer-events:none;}
+.vault-cap .kicker{justify-content:center;}
+.vault-cap .stitle{margin:0 auto;}
+.b-note{position:absolute;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--faint);
+  display:flex;align-items:center;gap:12px;}
+.b-note i{display:block;width:44px;height:1px;background:linear-gradient(90deg,var(--border-hi),transparent);}
+.b-note.tl{top:8%;left:4%;}
+.b-note.br{bottom:10%;right:4%;flex-direction:row-reverse;}
+.b-note.br i{background:linear-gradient(90deg,transparent,var(--border-hi));}
+.b-note b{color:var(--dim);font-weight:400;}
+@media(max-width:700px){.b-note{display:none;}}
+.b-caption{text-align:center;font-size:.55rem;letter-spacing:.44em;text-transform:uppercase;color:var(--dim);margin-top:6px;}
+.b-caption b{color:var(--text);font-weight:400;}
+.specsheet{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);
+  border:1px solid var(--border);margin-top:clamp(34px,6vh,60px);}
+.spec{background:var(--glass);
+  padding:clamp(18px,2.2vw,30px);text-align:center;position:relative;overflow:hidden;transition:background .4s var(--ease);}
+.spec::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gmt),transparent);opacity:0;transition:opacity .5s;}
+.spec:hover{background:rgba(20,24,28,.6);}
+.spec:hover::before{opacity:.65;}
+.spec .k{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);}
+.spec .v{font-family:var(--disp);font-size:clamp(1.25rem,2.1vw,1.7rem);font-weight:400;margin-top:10px;letter-spacing:.03em;}
+.spec .s{font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:8px;line-height:1.8;}
+@media(max-width:860px){.specsheet{grid-template-columns:1fr 1fr;}}
+
+/* ---------- ABOUT ---------- */
+#about .grid{display:grid;grid-template-columns:1.15fr .9fr;gap:clamp(36px,6vw,90px);align-items:start;}
+#about p.lead{font-size:clamp(.95rem,1.4vw,1.1rem);line-height:2;color:var(--dim);margin-top:28px;max-width:56ch;}
+#about p.lead strong{color:#fff;font-weight:400;}
+#about p.lead .drop{font-family:var(--serif);font-size:3.1em;float:left;line-height:.82;margin:6px 12px 0 0;}
+.certs{display:flex;gap:20px;margin-top:30px;align-items:center;}
+.cb{display:inline-flex;border-radius:6px;overflow:hidden;}
+.cb img{height:54px;width:auto;display:block;}
+.certs .cl{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);line-height:1.9;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+.stat{background:var(--glass);padding:clamp(18px,2.2vw,30px);
+  position:relative;overflow:hidden;transition:background .4s var(--ease);}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gmt),transparent);opacity:0;transition:opacity .5s;}
+.stat:hover{background:rgba(20,24,28,.6);}
+.stat:hover::before{opacity:.65;}
+.stat .n{font-family:var(--disp);font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:400;line-height:1;letter-spacing:.02em;}
+.stat .l{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-top:10px;line-height:1.7;}
+@media(max-width:860px){#about .grid{grid-template-columns:1fr;}}
+
+/* ---------- SPECIFICATIONS · skills sheet ---------- */
+.sheet{margin-top:52px;border-top:1px solid var(--border);}
+.srow{display:grid;grid-template-columns:220px 1fr;gap:clamp(16px,4vw,60px);align-items:baseline;
+  padding:clamp(18px,2.6vh,26px) 4px clamp(18px,2.6vh,26px) 16px;border-bottom:1px solid var(--border);transition:background .35s;
+  position:relative;overflow:hidden;}
+.srow::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gmt);
+  transform:scaleY(0);transform-origin:center;transition:transform .5s var(--ease);}
+.srow:hover{background:rgba(16,19,23,.5);}
+.srow:hover::after{transform:scaleY(1);}
+.srow .sk-k{font-family:var(--disp);font-size:1.1rem;font-weight:400;letter-spacing:.04em;display:flex;align-items:center;gap:12px;}
+.srow .sk-k::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gmt);
+  box-shadow:0 0 10px rgba(198,208,216,.8);opacity:0;transition:opacity .35s;}
+.srow:hover .sk-k::before{opacity:1;}
+.srow .sk-v{font-size:.62rem;font-weight:300;letter-spacing:.16em;line-height:2.1;color:var(--dim);text-transform:uppercase;}
+@media(max-width:700px){.srow{grid-template-columns:1fr;gap:8px;}}
+
+/* ---------- THE COLLECTION · projects ---------- */
+.coll{margin-top:52px;border-top:1px solid var(--border);}
+.ref{display:grid;grid-template-columns:90px 1fr 240px;gap:clamp(18px,3.4vw,54px);
+  padding:clamp(30px,4.6vh,48px) 4px clamp(30px,4.6vh,48px) 16px;border-bottom:1px solid var(--border);position:relative;
+  transition:background .4s;overflow:hidden;}
+.ref::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gmt);
+  transform:scaleY(0);transform-origin:center;transition:transform .5s var(--ease);}
+.ref:hover{background:rgba(16,19,23,.5);}
+.ref:hover::after{transform:scaleY(1);}
+.ref .num{font-family:var(--disp);font-size:clamp(1.5rem,2.4vw,2.1rem);font-weight:400;color:var(--faint);
+  line-height:1;transition:color .4s;}
+.ref:hover .num{color:var(--dim);}
+.ref h3{font-size:clamp(1.5rem,2.6vw,2.2rem);}
+.ref .meta{font-size:.52rem;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);margin-top:8px;
+  display:flex;gap:20px;flex-wrap:wrap;}
+.ref p{font-size:.8rem;line-height:1.85;color:var(--dim);margin-top:14px;max-width:58ch;}
+.ref p b{color:#fff;font-weight:400;}
+.ref .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.ref .tags span{font-size:.5rem;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;
+  border:1px solid var(--border);padding:4px 9px;}
+.ref a.link{font-size:.56rem;letter-spacing:.2em;color:var(--text);text-decoration:none;text-transform:uppercase;
+  border-bottom:1px solid var(--border-hi);padding-bottom:2px;transition:color .3s,border-color .3s;
+  display:inline-block;margin-top:16px;}
+.ref a.link:hover{color:var(--gmt);border-color:var(--gmt);}
+.ref .side{display:flex;flex-direction:column;gap:10px;}
+.ref h3 .fn{font-size:.55em;color:var(--faint);vertical-align:super;margin-left:2px;font-family:var(--sans);}
+.coll-fn{font-size:.58rem;letter-spacing:.08em;color:var(--faint);margin-top:28px;font-style:italic;
+  font-family:var(--serif);}
+.pcanvas{width:100%;height:120px;display:block;border:1px solid var(--border);
+  background:linear-gradient(160deg,rgba(14,17,21,.6),rgba(6,8,10,.35));}
+@media(max-width:860px){.ref{grid-template-columns:1fr;gap:14px;}
+  .ref .num{font-size:1.4rem;}.ref .side{max-width:340px;}}
+
+/* ---------- PROVENANCE ---------- */
+#prov .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);margin-top:52px;}
+.colhead{font-family:var(--disp);font-size:1rem;font-weight:400;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--text);margin-bottom:24px;}
+.xp{border-left:1px solid var(--border);padding-left:clamp(18px,2.2vw,28px);position:relative;margin-bottom:30px;}
+.xp::before{content:'';position:absolute;left:-3px;top:7px;width:5px;height:5px;border-radius:50%;
+  background:#dfe6ec;box-shadow:0 0 10px rgba(223,230,236,.8);}
+.xp .when{font-size:.64rem;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;}
+.xp .role{font-family:var(--serif);font-size:1.45rem;font-weight:500;margin-top:8px;}
+.xp .org{font-size:.7rem;color:var(--dim);margin-top:5px;letter-spacing:.14em;text-transform:uppercase;}
+.xp .desc{font-size:.84rem;color:var(--dim);line-height:1.85;margin-top:12px;max-width:48ch;}
+@media(max-width:860px){#prov .cols{grid-template-columns:1fr;gap:10px;}}
+
+/* ---------- THE OTHER HOURS ---------- */
+#track-panel{position:relative;margin-top:52px;border:1px solid var(--border);
+  background:rgba(6,8,10,.55);overflow:hidden;height:clamp(380px,58vh,560px);}
+#track{width:100%;height:100%;display:block;}
+#track-panel .tp-cap{position:absolute;left:22px;right:22px;bottom:18px;display:flex;gap:26px;flex-wrap:wrap;
+  font-size:.52rem;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);}
+#track-panel .tp-cap b{color:#fff;font-weight:400;}
+#track-panel .tp-live{position:absolute;right:22px;top:18px;display:flex;align-items:center;gap:8px;
+  font-size:.52rem;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);}
+#track-panel .tp-live i{width:6px;height:6px;border-radius:50%;background:var(--gmt);
+  box-shadow:0 0 10px var(--gmt);animation:blink 1.6s steps(1) infinite;}
+@media(max-width:520px){#track-panel .tp-cap{gap:6px 16px;}
+  #track-panel .tp-cap span:not(:first-child){display:none;}
+  #track-panel .tp-live{font-size:.46rem;gap:6px;}}
+@keyframes blink{50%{opacity:0}}
+.beyond-row{display:grid;grid-template-columns:1.3fr .9fr;gap:clamp(18px,2.4vw,30px);margin-top:clamp(18px,2.4vw,30px);}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+.bcell{background:var(--glass);padding:clamp(14px,1.8vw,22px);transition:background .4s var(--ease);}
+.bcell:hover{background:rgba(20,24,28,.86);}
+/* the mark sits outside the .steel element on purpose · .steel paints the text with a
+   clipped gradient over transparent ink, so a currentColor stroke inside it vanishes */
+.bhead{display:flex;align-items:center;gap:11px;}
+.ic{width:19px;height:19px;flex:none;fill:none;stroke:var(--gmt);stroke-width:1.2;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.6;
+  transition:opacity .45s var(--ease),transform .45s var(--ease);}
+.bcell:hover .ic{opacity:1;transform:translateY(-1px);}
+.bcell .t{font-family:var(--serif);font-size:1.35rem;font-weight:500;}
+.bcell .s{font-size:.6rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-top:8px;}
+.bcell .d{font-size:.78rem;color:var(--faint);line-height:1.75;margin-top:11px;}
+.film .frame{border:1px solid var(--border);padding:6px;background:rgba(5,7,9,.5);height:100%;
+  display:flex;flex-direction:column;}
+.film video{width:100%;flex:1;object-fit:cover;display:block;filter:grayscale(1) contrast(1.15) brightness(.85);
+  min-height:220px;background:#0a0d10;}
+.film-cap{padding:12px 4px 6px;display:flex;justify-content:space-between;font-size:.52rem;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--dim);}
+.film-cap b{color:#fff;font-weight:400;}
+@media(max-width:860px){.beyond-row{grid-template-columns:1fr;}.bcell .d{display:none;}}
+
+/* ---------- CONTACT ---------- */
+#contact{padding-bottom:40px;}
+#contact .big{font-family:var(--disp);font-size:clamp(2.5rem,6.6vw,5.6rem);font-weight:400;line-height:1.08;letter-spacing:.01em;}
+#contact .big em{font-family:var(--serif);font-style:italic;font-weight:500;}
+.clinks{display:flex;gap:14px;margin-top:46px;flex-wrap:wrap;}
+.clink{font-size:.58rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;
+  color:var(--text);border:1px solid var(--border-hi);padding:17px 32px;display:inline-flex;align-items:center;gap:10px;
+  position:relative;overflow:hidden;z-index:1;transition:color .45s,border-color .45s;}
+.clink::before{content:'';position:absolute;inset:0;background:#e9eef2;transform:translateY(101%);
+  transition:transform .5s var(--ease);z-index:-1;}
+.clink:hover{color:#0a0c0e;border-color:#e9eef2;}
+.clink:hover::before{transform:translateY(0);}
+.clink.primary{background:#e9eef2;color:#0a0c0e;border-color:#e9eef2;font-weight:500;}
+.clink.primary::before{background:#0a0c0e;}
+.clink.primary:hover{color:#e9eef2;}
+#gm-canvas{display:block;width:100%;height:230px;margin-top:70px;}
+footer{border-top:1px solid var(--border);padding:26px 0 34px;}
+.foot{display:flex;gap:28px;flex-wrap:wrap;justify-content:space-between;
+  font-size:.52rem;letter-spacing:.24em;color:var(--faint);text-transform:uppercase;}
+.foot b{color:var(--dim);font-weight:400;}
+
+/* ---------- the signal ----------
+   The mark is the real Dark Knight geometry, used as an alpha MASK rather than as a
+   picture: the bat is transparent in the source, so painting through it gives a lit
+   disc with the bat as a hole in it — a stencil in front of a lamp, which is what a
+   bat-signal actually is. It also means the colour is ours, not the file's.
+
+   Taken out of the flow on purpose · inline, a box this shape sets the line height of
+   the whole footer row and pushes the three columns apart. Anchored to its own span
+   instead, it cannot move anything. */
+.foot-sig{position:relative;padding-right:64px;}
+.batsig{position:absolute;right:0;top:50%;width:56px;height:34px;   /* 570:350 */
+  transform:translateY(-50%);pointer-events:none;
+  /* a carbon arc does not come up clean · it stutters as it strikes, burns, catches
+     once, and drops out before it is struck again. That stutter is the character of
+     the thing, so it is an irregular rhythm rather than a sine. */
+  animation:bsStrike 9s linear infinite;}
+
+.bs-mark{position:absolute;inset:0;display:block;
+  background:linear-gradient(112deg,#f2f8ff 0%,#dceaf8 26%,rgba(190,212,232,.5) 62%,rgba(160,186,210,.12) 100%);
+  -webkit-mask:url(../../media/bat-signal.png) center/contain no-repeat;
+          mask:url(../../media/bat-signal.png) center/contain no-repeat;}
+
+/* the light the disc throws into the air around it · the mask cannot bleed, so the
+   bloom is its own layer sitting under the lamp end of the mark */
+/* centred on the disc, which sits at 49.6% / 50% of the source image */
+.bs-glow{position:absolute;left:49.6%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(207,230,251,.42) 0%,rgba(207,230,251,.16) 42%,rgba(207,230,251,0) 70%);
+  animation:bsBreathe 6.5s ease-in-out infinite;}
+
+@keyframes bsBreathe{
+  0%,100%{opacity:.72;transform:scale(.94)}
+  46%    {opacity:1;  transform:scale(1.06)}
+}
+@keyframes bsStrike{
+  0%  {opacity:0}
+  1.5%{opacity:1}
+  3%  {opacity:.12}
+  5%  {opacity:1}
+  7%  {opacity:.3}
+  9%  {opacity:1}
+  62% {opacity:1}
+  64% {opacity:.18}
+  66% {opacity:1}
+  90% {opacity:1}
+  94% {opacity:0}
+  100%{opacity:0}
+}
+@media(max-width:640px){.foot-sig{padding-right:0;}.batsig{display:none;}}
+@media(prefers-reduced-motion:reduce){
+  .batsig,.bs-glow{animation:none;opacity:1;}
+}
+
+body.no-webgl #track-panel,body.no-webgl #gm-canvas{display:none;}

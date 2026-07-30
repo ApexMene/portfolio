@@ -1,0 +1,19 @@
+# Dependencies
+vendor/
+
+# Agent tooling
+.omo/
+.claude/
+.codegraph
+
+# Backups
+*-backup.html
+*-backup-*.html
+
+# Large media not referenced in site
+20260301_191329_481~2.mp4
+IMG-20260301-WA0052.jpg
+
+# OS
+.DS_Store
+Thumbs.db

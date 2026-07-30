@@ -1,0 +1,96 @@
+/* ============================================================
+   G·M · v5 WAYNE · private-catalogue monochrome
+   black · grey ceramic · steel (the GRNR palette)
+============================================================ */
+:root{
+  --bg:#07080a;
+  --ink:#040506;
+  --text:#eef1f3;
+  --dim:rgba(226,232,238,.56);
+  --faint:rgba(226,232,238,.26);
+  --gmt:#c6d0d8;                        /* polished steel · the one accent */
+  --border:rgba(226,234,240,.09);
+  --border-hi:rgba(226,234,240,.22);
+  /* opaque enough to stand alone · no backdrop-filter needed over a flat dark page,
+     and every one of these panels used to cost a full backdrop blur per frame */
+  --glass:rgba(12,14,17,.78);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --disp:'Marcellus','Cormorant Garamond',Georgia,serif;
+  --sans:'Inter Tight','Inter',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);          /* expo-out · the house curve */
+  --ease-io:cubic-bezier(.62,.05,.2,1);     /* in-out · for things that travel both ways */
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:clamp(15px,1.04vw,17px);
+  scrollbar-color:#1e2228 #07080a;scrollbar-width:thin;}
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:#07080a;}
+::-webkit-scrollbar-thumb{background:#1e2228;border-radius:5px;border:2px solid #07080a;}
+::-webkit-scrollbar-thumb:hover{background:#2c333b;}
+html,body{background:var(--bg);color:var(--text);}
+body{font-family:var(--sans);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::selection{background:rgba(198,208,216,.82);color:#05070a;}
+a{color:inherit;}
+img{max-width:100%;}
+
+/* engraved steel text · the signature finish */
+.steel{background:linear-gradient(180deg,#ffffff 0%,#dfe6ec 38%,#88939d 78%,#c6d0d8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+
+.lbl{font-size:.58rem;font-weight:400;letter-spacing:.32em;text-transform:uppercase;}
+
+/* ---------- fixed atmosphere ---------- */
+#vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 36%, transparent 52%, rgba(0,1,2,.55) 100%);}
+/* the grain layer is composited and always resident · sized just wide enough to cover
+   its own 2% drift. It used to be 200%×200% — four full screens of GPU texture */
+#grain{position:fixed;inset:-6%;width:112%;height:112%;z-index:2;pointer-events:none;opacity:.032;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 900ms steps(3) infinite;will-change:transform;}
+@keyframes grain{0%{transform:translate3d(0,0,0)}33%{transform:translate3d(-2%,1%,0)}66%{transform:translate3d(1%,-2%,0)}100%{transform:translate3d(0,0,0)}}
+main{position:relative;z-index:3;}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;z-index:100;background:var(--ink);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:26px;
+  transition:opacity .75s var(--ease),visibility .75s;}
+#loader.done{opacity:0;visibility:hidden;}
+#loader .mono{font-family:var(--serif);font-weight:500;font-size:3.1rem;letter-spacing:.18em;text-indent:.18em;}
+#loader .bar{width:min(300px,58vw);height:1px;background:rgba(226,234,240,.1);overflow:hidden;}
+#loader .bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#fff,#88939d);
+  transform:scaleX(0);transform-origin:0 50%;will-change:transform;}
+#loader .sub{color:var(--faint);}
+
+/* ---------- progress hairline · minute-track like a bezel ---------- */
+#prog-rail{position:fixed;top:0;left:0;right:0;height:2px;z-index:60;background:rgba(255,255,255,.045);}
+#prog{position:absolute;top:0;left:0;height:100%;width:100%;
+  background:linear-gradient(90deg,#fff,#98a4ae);
+  transform:scaleX(0);transform-origin:0 50%;will-change:transform;}
+#prog-ticks{position:absolute;inset:0;pointer-events:none;}
+#prog-ticks i{position:absolute;top:0;width:1px;height:6px;background:rgba(226,234,240,.4);}
+#prog-hit{position:fixed;top:0;left:0;right:0;height:14px;z-index:61;cursor:pointer;}
+#prog-tip{position:fixed;top:12px;left:0;transform:translateX(-50%);z-index:61;
+  font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  background:rgba(6,7,9,.9);border:1px solid var(--border-hi);padding:5px 10px;
+  pointer-events:none;opacity:0;white-space:nowrap;transition:opacity .2s;}
+#prog-tip.show{opacity:1;}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:22px clamp(20px,4vw,56px);
+  /* never transition backdrop-filter · the browser re-blurs the whole strip on every
+     frame of the interpolation. Fade the tint instead, snap the blur */
+  transition:background .45s var(--ease),border-color .45s var(--ease);
+  border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(6,7,9,.74);backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);
+  border-bottom-color:var(--border);}
+.nav-logo{font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.3em;
+  text-decoration:none;text-transform:uppercase;}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{font-size:.56rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;
+  text-decoration:none;color:var(--dim);padding-bottom:4px;
+  background:linear-gradient(#e9eef2,#e9eef2) left bottom/0 1px no-repeat;
+  transition:color .3s,background-size .45s var(--ease);}
+.nav-links a:hover{color:#fff;background-size:100% 1px;}
+.nav-time{font-size:.56rem;letter-spacing:.26em;color:var(--faint);text-transform:uppercase;}
+@media(max-width:960px){.nav-links{display:none;}}

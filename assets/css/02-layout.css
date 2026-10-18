@@ -61,16 +61,16 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:.015em;line-heig
 #hero .mast{position:relative;text-align:center;padding:0 20px clamp(64px,10vh,120px);max-width:100%;}
 .hero-kick{font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(238,243,246,.72);
   margin-bottom:clamp(18px,3vh,30px);}
-.hero-name{font-family:var(--disp);font-size:clamp(2.7rem,9.6vw,9.2rem);line-height:.95;font-weight:400;
-  white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;text-indent:.07em;}
+.hero-name{font-family:var(--disp);font-size:clamp(3rem,13.5vw,13rem);line-height:.95;font-weight:400;
+  white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;text-indent:.07em;will-change:transform;}
 /* per-letter rise · the old version animated letter-spacing and filter, which
    relaid-out and re-rastered the biggest line on the page every frame for 2.2s,
    right while the rest of the site was still booting */
 /* held until the loader clears · otherwise the whole reveal plays out behind it */
-.hero-name .hl{display:inline-block;opacity:0;transform:translate3d(0,.42em,0);
-  animation:hlIn 1.05s var(--ease) both paused;animation-delay:calc(.12s + var(--i)*.05s);}
+.hero-name .hl{display:inline-block;opacity:0;transform:translate3d(0,.9em,0) scale(.92);
+  animation:hlIn 1.2s var(--ease) both paused;animation-delay:calc(.12s + var(--i)*.07s);}
 body.ready .hero-name .hl{animation-play-state:running;}
-@keyframes hlIn{to{opacity:1;transform:translate3d(0,0,0);}}
+@keyframes hlIn{to{opacity:1;transform:translate3d(0,0,0) scale(1);}}
 .hero-rule{width:min(320px,50vw);height:1px;margin:clamp(20px,3.4vh,34px) auto;
   background:linear-gradient(90deg,transparent,#c6d0d8,transparent);}
 .hero-tag{display:flex;flex-direction:column;align-items:center;gap:8px;}

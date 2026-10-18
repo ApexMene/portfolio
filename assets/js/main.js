@@ -22,6 +22,7 @@ import {updateCursor,drawGuill} from './ui/signature.js';
 import {signConsole} from './ui/console-sign.js';
 
 import {initCave,updateCave}       from './scenes/cave.js';
+import {updateHeroDepth}           from './scenes/hero-depth.js';
 import {initBezel,updateBezel}     from './scenes/bezel.js';
 import {initTrack,updateTrack}     from './scenes/track.js';
 import {updateMonogram}            from './scenes/monogram.js';
@@ -51,6 +52,7 @@ function frame(){
     }
   }
   updateCursor(dt);
+  updateHeroDepth(dt);
 
   /* ---------- the pinned stage, then the scenes that read it ---------- */
   updateStage(dt);

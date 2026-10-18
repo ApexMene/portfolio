@@ -24,15 +24,15 @@
 
 <!-- Load order is the cascade order · these four files are one stylesheet split by
      subject, not four independent layers. Keep them in this sequence. -->
-<link rel="stylesheet" href="assets/css/01-base.css">
-<link rel="stylesheet" href="assets/css/02-layout.css">
-<link rel="stylesheet" href="assets/css/03-sections.css">
-<link rel="stylesheet" href="assets/css/04-stage.css">
+<link rel="stylesheet" href="assets/css/01-base.css?v=6">
+<link rel="stylesheet" href="assets/css/02-layout.css?v=6">
+<link rel="stylesheet" href="assets/css/03-sections.css?v=6">
+<link rel="stylesheet" href="assets/css/04-stage.css?v=6">
 
 <!-- warm the module graph while the HTML is still parsing · without these the browser
      only discovers core/ and scenes/ after main.js has been fetched and parsed -->
 <script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
-<link rel="modulepreload" href="assets/js/main.js">
+<link rel="modulepreload" href="assets/js/main.js?v=6">
 <link rel="modulepreload" href="assets/js/core/math.js">
 <link rel="modulepreload" href="assets/js/core/env.js">
 <link rel="modulepreload" href="assets/js/core/viewport.js">
@@ -250,20 +250,8 @@
       <div class="ref rv">
         <div class="num">VI.</div>
         <div>
-          <h3 class="steel">Brawn · Hybrid Athlete Platform</h3>
-          <div class="meta"><span>Ref. 006</span><span>Personal</span><span>2026 · In progress</span></div>
-          <p>Self-hosted training, nutrition and recovery tracker for athletes who lift, fight and run.
-          Zero-dependency <b>Node.js</b> API on SQLite, Svelte 5 web and Android app, local AI coach. Website live, app in progress.</p>
-          <div class="tags"><span>Node.js</span><span>SQLite</span><span>Svelte 5</span><span>Capacitor</span><span>LLM</span></div>
-          <a class="link" href="https://getbrawn.app" target="_blank" rel="noopener">↗ getbrawn.app</a>
-        </div>
-        <div class="side"><canvas class="pcanvas" data-viz="brawn"></canvas></div>
-      </div>
-      <div class="ref rv">
-        <div class="num">VII.</div>
-        <div>
           <h3 class="steel">EH57E · Linux Fingerprint Driver</h3>
-          <div class="meta"><span>Ref. 007</span><span>Open source</span><span>2026 · In progress</span></div>
+          <div class="meta"><span>Ref. 006</span><span>Open source</span><span>2026 · In progress</span></div>
           <p>A <b>libfprint</b> driver for the EgisTec sensor inside Samsung Galaxy Book power buttons, which had
           no Linux support. USB protocol reconstructed; enrolment and PAM login work, matching still being tuned.</p>
           <div class="tags"><span>C</span><span>libfprint</span><span>USB</span><span>PAM</span></div>
@@ -394,6 +382,6 @@
 
 </main>
 
-<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/main.js?v=6"></script>
 </body>
 </html>

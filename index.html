@@ -31,6 +31,7 @@
 
 <!-- warm the module graph while the HTML is still parsing · without these the browser
      only discovers core/ and scenes/ after main.js has been fetched and parsed -->
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
 <link rel="modulepreload" href="assets/js/main.js">
 <link rel="modulepreload" href="assets/js/core/math.js">
 <link rel="modulepreload" href="assets/js/core/env.js">
@@ -393,7 +394,6 @@
 
 </main>
 
-<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
 <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>

@@ -115,7 +115,20 @@ const VIZ={
     });
     if(Math.sin(t*4)>0){ctx.fillStyle=`rgba(${WHT},.9)`;ctx.beginPath();ctx.arc(w*.9,h*.16,2,0,7);ctx.fill();}
   },
-
+  brawn(c,t){
+    const{ctx,w,h}=c,n=7,bw=w*.07,gap=w*.045,ox=w*.1,base=h*.84;
+    ctx.strokeStyle=`rgba(${WHT},.25)`;ctx.beginPath();ctx.moveTo(ox-4,base);ctx.lineTo(ox+n*(bw+gap),base);ctx.stroke();
+    const wk=Math.floor(t/1.4);
+    for(let i=0;i<n;i++){
+      const v=.3+.55*((Math.sin((wk+i)*1.7)+1)/2)*(.6+.4*i/n);
+      const grow=i===n-1?clamp((t%1.4)/.6,0,1):1;
+      ctx.fillStyle=`rgba(${i===n-1?ICE:GRY},${i===n-1?.9:.55})`;
+      ctx.fillRect(ox+i*(bw+gap),base-v*h*.62*grow,bw,v*h*.62*grow);
+    }
+    const r=h*.16,cx=w*.86,cy=h*.3,p=(t%3)/3;
+    ctx.strokeStyle=`rgba(${WHT},.2)`;ctx.beginPath();ctx.arc(cx,cy,r,0,7);ctx.stroke();
+    ctx.strokeStyle=`rgba(${WHT},.85)`;ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+p*Math.PI*2);ctx.stroke();
+  },
   print(c,t){
     const{ctx,w,h}=c,cx=w*.5,cy=h*.52;
     for(let i=0;i<9;i++){
